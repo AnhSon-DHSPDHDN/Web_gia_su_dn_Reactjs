@@ -1,0 +1,193 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "admin",
+      "passWord": "anhson123",
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "userName": "anhson",
+      "passWord": "anhson123",
+      "isAdmin": false
+    },
+    {
+      "userName": "letruong",
+      "passWord": "anhson",
+      "isAdmin": false,
+      "id": 3
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "student": "2 Nam",
+      "classRank": "Lớp 5",
+      "subJects": "Toán",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "salary": 1500000,
+      "time": "2h/ngày",
+      "dayInWeek": 3,
+      "request": "Gia sư Nam",
+      "contact": "0123456789",
+      "createBy": "admin",
+      "image": "https://media-a.laodong.vn/Storage/NewsPortal/2019/7/16/744618/Bo-Sach-Giao-Khoa-Lo.jpg?w=720&crop=auto&scale=both"
+    },
+    {
+      "id": 2,
+      "student": "2 Nam",
+      "classRank": "Lớp 5",
+      "subJects": "Toán",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "salary": 1500000,
+      "time": "2h/ngày",
+      "dayInWeek": 3,
+      "request": "Gia sư Nam",
+      "contact": "0123456789",
+      "createBy": "admin",
+      "image": "https://media-a.laodong.vn/Storage/NewsPortal/2019/7/16/744618/Bo-Sach-Giao-Khoa-Lo.jpg?w=720&crop=auto&scale=both"
+    },
+    {
+      "id": 3,
+      "student": "2 Nam",
+      "classRank": "Lớp 5",
+      "subJects": "Toán",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "salary": 1500000,
+      "time": "2h/ngày",
+      "dayInWeek": 3,
+      "request": "Gia sư Nam",
+      "contact": "0123456789",
+      "createBy": "admin",
+      "image": "https://media-a.laodong.vn/Storage/NewsPortal/2019/7/16/744618/Bo-Sach-Giao-Khoa-Lo.jpg?w=720&crop=auto&scale=both"
+    },
+    {
+      "id": 4,
+      "student": "2 Nam",
+      "classRank": "Lớp 5",
+      "subJects": "Toán",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "salary": 1500000,
+      "time": "2h/ngày",
+      "dayInWeek": 3,
+      "request": "Gia sư Nam",
+      "contact": "0123456789",
+      "createBy": "admin",
+      "image": "https://media-a.laodong.vn/Storage/NewsPortal/2019/7/16/744618/Bo-Sach-Giao-Khoa-Lo.jpg?w=720&crop=auto&scale=both"
+    },
+    {
+      "student": "Pear",
+      "classRank": "TIEUHOC",
+      "subJects": "Lý",
+      "address": "Hải Châu - Đà Nẵng",
+      "salary": "1600000",
+      "time": "3",
+      "dayInWeek": "3",
+      "request": "Không",
+      "contact": "123243547875",
+      "createBy": "admin",
+      "image": "https://www.google.com.vn/url?sa=i&url=https%3A%2F%2Ftapchimeovat.com%2Fkich-co-cua-anh-2x33x44x66x99x12-chuan-quoc-te-chung-minh-thu-228&psig=AOvVaw2qqSHxcE2UUUOejx2BnSuV&ust=1590390968410000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDe_Jf6y-kCFQAAAAAdAAAAABAD",
+      "id": 5
+    }
+  ],
+  "classesquece": [
+    {
+      "student": "2 Nam",
+      "classRank": "TIEUHOC",
+      "subJects": "Toán",
+      "address": "12 Phạm Như Xương, Hòa Khánh, Đà Nẵng",
+      "salary": "1500000",
+      "time": "3",
+      "dayinweek": "3",
+      "request": "Gia sư Nam",
+      "contact": "01256789",
+      "image": "https://www.google.com.vn/url?sa=i&url=https%3A%2F%2Ftapchimeovat.com%2Fkich-co-cua-anh-2x33x44x66x99x12-chuan-quoc-te-chung-minh-thu-228&psig=AOvVaw2qqSHxcE2UUUOejx2BnSuV&ust=1590390968410000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDe_Jf6y-kCFQAAAAAdAAAAABAD",
+      "createBy": "admin",
+      "accept": false,
+      "id": 1
+    },
+    {
+      "student": "Nguyễn Văn A",
+      "classRank": "THPT",
+      "subJects": "Văn",
+      "address": "Liên Chiểu - Đà Nẵng",
+      "salary": "2000000",
+      "time": "2",
+      "dayinweek": "4",
+      "request": "Cao trên m75",
+      "contact": "123456",
+      "image": "https://www.google.com.vn/url?sa=i&url=https%3A%2F%2Ftapchimeovat.com%2Fkich-co-cua-anh-2x33x44x66x99x12-chuan-quoc-te-chung-minh-thu-228&psig=AOvVaw2qqSHxcE2UUUOejx2BnSuV&ust=1590390968410000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDe_Jf6y-kCFQAAAAAdAAAAABAD",
+      "createBy": "admin",
+      "accept": false,
+      "id": 3
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "gender": "Nam",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "birthday": 1999,
+      "placeOfBirth": "Khe Sanh, Hướng Hóa, Quảng Trị",
+      "phone": "0334965080",
+      "email": "anhson2121999@gmail.com",
+      "nowjob": "Sinh viên",
+      "avatar": "https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/71080488_1150197848517189_4315646176255803392_n.jpg?_nc_cat=107&_nc_sid=85a577&_nc_oc=AQnYDfaZinK_LPl0KASAFd7dOmUggcyg6Fo7LRRjiK0xiX6Grny-ZbZvoT3TGKClXBE&_nc_ht=scontent.fsgn2-1.fna&oh=9cd205069ca9cca466816329d7f22efc&oe=5ED82B4A",
+      "cmnd": "https://lambangdaihocaz.com/wp-content/uploads/2019/06/nhan-lam-cmnd-gia.jpg",
+      "wish": "TIEUHOC",
+      "createBy": "admin"
+    }
+  ],
+  "teachersquece": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "gender": "Nam",
+      "address": "12-Âu Cơ, Hòa Khánh, Đà Nẵng",
+      "birthday": 1999,
+      "placeOfBirth": "Khe Sanh, Hướng Hóa, Quảng Trị",
+      "phone": "0334965080",
+      "email": "anhson2121999@gmail.com",
+      "nowjob": "Sinh viên",
+      "avatar": "https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/71080488_1150197848517189_4315646176255803392_n.jpg?_nc_cat=107&_nc_sid=85a577&_nc_oc=AQnYDfaZinK_LPl0KASAFd7dOmUggcyg6Fo7LRRjiK0xiX6Grny-ZbZvoT3TGKClXBE&_nc_ht=scontent.fsgn2-1.fna&oh=9cd205069ca9cca466816329d7f22efc&oe=5ED82B4A",
+      "cmnd": "https://lambangdaihocaz.com/wp-content/uploads/2019/06/nhan-lam-cmnd-gia.jpg",
+      "wish": "TIEUHOC",
+      "createBy": "admin",
+      "accept": false
+    },
+    {
+      "name": "Trần Văn Anh Sơn",
+      "gender": "Nam",
+      "address": "Đà Nẵng ",
+      "birthday": "1999",
+      "placeOfBirth": "Quảng Bình",
+      "phone": "23456",
+      "email": "anhsondragon2@gmail.com",
+      "nowjob": "Sinh viên",
+      "avatar": "aaa",
+      "cmnd": "aaaaa",
+      "wish": "TIEUHOC",
+      "createBy": "admin",
+      "accept": false,
+      "id": 2
+    },
+    {
+      "name": "Trần Văn Sơn",
+      "gender": "Nam",
+      "address": "Đà Nẵng",
+      "birthday": "1999",
+      "placeOfBirth": "Quảng Trị",
+      "phone": "123",
+      "email": "123",
+      "nowjob": "123",
+      "avatar": "123",
+      "cmnd": "123",
+      "wish": "123",
+      "createBy": "admin",
+      "accept": false,
+      "id": 3
+    }
+  ]
+}

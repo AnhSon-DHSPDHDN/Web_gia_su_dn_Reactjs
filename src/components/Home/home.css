@@ -1,0 +1,46 @@
+
+.block-1 img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.block-1{
+    position: relative;
+    text-align: center;
+    color: black;
+}
+.block-1 a{
+    display: inline;
+}
+.container-fluid-main{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.container-fluid-main p{
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.container-fluid-main .video{
+    text-align: center;
+    position: relative;
+}
+.container-fluid-main video{
+    padding: 20px;
+    width: 490px;
+    height: 300px;
+}
+.list-class img{
+    width: 250px;
+    height: 250px;
+}
+.list-class{
+    margin-bottom: 20px;
+}
+.imgClass:hover{
+    transition-duration: .5s;
+    transform: scale(1.2);
+    margin-bottom: 20px;
+}

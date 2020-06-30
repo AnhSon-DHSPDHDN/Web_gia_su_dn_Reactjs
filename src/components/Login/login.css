@@ -1,0 +1,72 @@
+.login .container{
+    position: relative !important;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.box{
+    margin: 20px auto;
+    width: 350px;
+    padding: 40px;
+    background: rgba(44, 62, 80, 0.7);
+    text-align: center;
+  }
+  .box input[type = "text"], .box input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    border-radius: 24px;
+    outline: none;
+    color: white;
+    width: 200px;
+    transition: 0.25s;
+  }
+  .box h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .box input[type = "text"]:focus, .box input[type = "password"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+  }
+.login button{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+.login button:hover{
+    background-color: #2ecc71;
+  }
+
+  .login a{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+.login a:hover{
+    background-color: #2ecc71;
+    text-decoration: none;
+  }

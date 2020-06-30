@@ -1,0 +1,24 @@
+.menu-admin ul{
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    width: max;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+.menu-admin ul li{
+    display: inline-block;
+}
+.menu-admin ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.menu-admin ul li:hover{
+    background-color: darkblue;
+}
+.panel .table th, .panel .table td{
+    text-align: center;
+}
