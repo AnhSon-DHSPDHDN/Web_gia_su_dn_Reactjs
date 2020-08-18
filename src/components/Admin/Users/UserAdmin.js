@@ -5,6 +5,7 @@ import {
 } from '../../../actions/index';
 import { connect } from 'react-redux'
 import MenuAdmin from '../MenuAdmin';
+import { Redirect } from 'react-router-dom'
 
 class UserAdmin extends Component {
 
@@ -22,7 +23,9 @@ class UserAdmin extends Component {
                     <td>{user.passWord}</td>
                     <td>{user.isAdmin.toString()}</td>
                     <td>
-                        <button type="button" className="btn btn-danger">Edit</button>
+                        <button type="button" className="btn btn-danger"
+                            onClick={() => this.onEdit(user.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-default"
                             onClick={() => this.onDelete(user.id)}
                         >Delete</button>
@@ -33,12 +36,27 @@ class UserAdmin extends Component {
         return result;
     }
 
-    onDelete = (id) => {
-        this.props.deleteUser(id);
+    onEdit = (id) => {
+        if (id === 1) {
+            return alert(`Can't edit account Admin`)
+        }
+        return this.props.history.push(`users/edit/${id}`)
+    }
+
+    onDelete = async (id) => {
+        if (id === 1) {
+            return alert(`Can't delete account admin`)
+        }
+        await this.props.deleteUser(id);
     }
 
     render() {
         let { allUsers } = this.props;
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
                 <MenuAdmin />
@@ -80,10 +98,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getAllUsers: () => {
-            dispatch(actFetchUsersRequest())
+            return dispatch(actFetchUsersRequest())
         },
         deleteUser: (id) => {
-            dispatch(actDeleteUserRequest(id))
+            return dispatch(actDeleteUserRequest(id))
         }
     }
 }

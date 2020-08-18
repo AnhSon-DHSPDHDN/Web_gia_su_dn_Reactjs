@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import MenuAdmin from '../MenuAdmin';
-import { actGetAllTeacherQueceRequest } from '../../../actions/index';
+import {
+    actGetAllTeacherQueceRequest,
+    actDeleteTeacherQueceRequest,
+    actAddTeacherRequest
+} from '../../../actions/index';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 class TeacherQueceAdmin extends Component {
 
-    componentDidMount = () => {
-        this.props.getAllTeacherQuece();
+    componentDidMount = async () => {
+        await this.props.getAllTeacherQuece();
     }
 
     showAllTeacherQuece = (allTeacherQuece) => {
@@ -21,7 +26,9 @@ class TeacherQueceAdmin extends Component {
                     <td>{teacher.birthday}</td>
                     <td>{teacher.phone}</td>
                     <td>
-                        <button type="button" className="btn btn-danger">Edit</button>
+                        <button type="button" className="btn btn-danger"
+                            onClick={() => this.onEdit(teacher.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-success"
                             onClick={() => this.onAccept(teacher)}
                         >Accept</button>
@@ -34,9 +41,40 @@ class TeacherQueceAdmin extends Component {
         }
         return result
     }
+    onEdit = (id) => {
+        return this.props.history.push(`teacher-quece/edit/${id}`)
+    }
+
+    onDelete = (id) => {
+        return this.props.deleteTeacherQuece(id)
+    }
+
+    onAccept = async (teacher) => {
+        await this.props.addTeacher({
+            name: teacher.name,
+            gender: teacher.gender,
+            address: teacher.address,
+            birthday: teacher.birthday,
+            placeOfBirth: teacher.placeOfBirth,
+            phone: teacher.phone,
+            email: teacher.email,
+            nowjob: teacher.nowjob,
+            avatar: teacher.avatar,
+            cmnd: teacher.cmnd,
+            wish: teacher.wish,
+            createBy: teacher.createBy,
+            accept: true
+        });
+        return this.props.deleteTeacherQuece(teacher.id)
+    }
 
     render() {
         let { allTeacherQuece } = this.props;
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
                 <MenuAdmin />
@@ -79,7 +117,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getAllTeacherQuece: () => {
-            dispatch(actGetAllTeacherQueceRequest())
+            return dispatch(actGetAllTeacherQueceRequest())
+        },
+        deleteTeacherQuece: (id) => {
+            return dispatch(actDeleteTeacherQueceRequest(id))
+        },
+        addTeacher: (teacher) => {
+            return dispatch(actAddTeacherRequest(teacher))
         }
     }
 }

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import MenuAdmin from '../MenuAdmin';
 import { connect } from 'react-redux';
-import { actFetchAllClassesAPI } from './../../../actions/index'
+import {
+    actFetchAllClassesAPI,
+    deleteClassAdminRequest
+} from './../../../actions/index';
+import { Redirect } from 'react-router-dom'
 
 class ClassesAdmin extends Component {
 
@@ -21,7 +25,10 @@ class ClassesAdmin extends Component {
                     <td>{clas.salary}</td>
                     <td>{clas.request}</td>
                     <td>
-                        <button type="button" className="btn btn-danger">Edit</button>
+                        <button type="button"
+                            className="btn btn-danger"
+                            onClick={() => this.onEdit(clas.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-default"
                             onClick={() => this.onDelete(clas.id)}
                         >Delete</button>
@@ -31,21 +38,36 @@ class ClassesAdmin extends Component {
         }
         return result;
     }
+    onEdit = (id) => {
+        return this.props.history.push(`classes/edit/${id}`);
+    }
+    onDelete = (id) => {
+        return this.props.deleteClass(id)
+    }
+    onAddNewClass = () => {
+        return this.props.history.push('classes/add');
+    }
 
     render() {
         let { allClass } = this.props;
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
                 <MenuAdmin />
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List Class</h3>
+                <div className="panel panel-primary">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">List Class</h3>
                     </div>
-                    <div class="panel-body">
+                    <div className="panel-body">
 
-                        <button type="button" class="btn btn-success">ADD NEW CLASS</button>
+                        <button type="button" className="btn btn-success"
+                            onClick={this.onAddNewClass}>ADD NEW CLASS</button>
 
-                        <table class="table table-bordered table-hover">
+                        <table className="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -78,7 +100,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getAllClass: () => {
-            dispatch(actFetchAllClassesAPI())
+            return dispatch(actFetchAllClassesAPI())
+        },
+        deleteClass: (id) => {
+            return dispatch(deleteClassAdminRequest(id))
         }
     }
 }

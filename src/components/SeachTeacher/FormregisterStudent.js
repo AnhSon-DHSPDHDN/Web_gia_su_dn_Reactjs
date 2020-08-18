@@ -25,15 +25,16 @@ class FormregisterStudent extends Component {
             [name]: value
         })
     }
-    onRegister = () => {
-        let user = localStorage.getItem('token')
+    onRegister = async (e) => {
+        e.preventDefault();
+        let user = await localStorage.getItem('token')
         let { student, classrank, subjects, address,
-            salary, time, dayinweek, request, contact, image } = this.state
+            salary, time, dayinweek, request, contact, image } = await this.state
         if (user) {
             if (student !== '' && classrank !== '' && subjects !== '' && address !== '' && salary !== ''
                 && time !== '' && dayinweek !== '' && request !== '' && contact !== '' && image !== '') {
-                let createBy = user.split(' ')[0];
-                this.props.fetchNewClassQuece({
+                let createBy = await user.split(' ')[0];
+                await this.props.fetchNewClassQuece({
                     student: student,
                     classRank: classrank,
                     subJects: subjects,
@@ -47,7 +48,8 @@ class FormregisterStudent extends Component {
                     createBy: createBy,
                     accept: false
                 });
-                return alert('Đăng ký thành công! Chúng tôi sẽ kiểm tra thông tin và gửi yêu cầu của bạn')
+                await alert('Đăng ký thành công! Chúng tôi sẽ kiểm tra thông tin và gửi yêu cầu của bạn')
+                return window.location.href = '/'
             }
             return alert('Vui lòng điền đầy đủ các trường')
         } else return alert("Bạn phải đăng nhập mới có thể sử dụng chức năng này")
@@ -175,7 +177,7 @@ const mapStateTopProps = (state) => {
 const mapDisPatchToProps = (dispatch, props) => {
     return {
         fetchNewClassQuece: (classquece) => {
-            dispatch(actFetchNewClassQueceRequest(classquece))
+            return dispatch(actFetchNewClassQueceRequest(classquece))
         }
     }
 }

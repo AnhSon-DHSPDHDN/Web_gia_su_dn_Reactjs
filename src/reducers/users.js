@@ -17,6 +17,14 @@ const users = (state = initialState, action) => {
             state.splice(index, 1);
             return [...state];
         }
+        case Types.GET_USER_BY_ID: {
+            state = action.user;
+            return [state]
+        }
+        case Types.UPDATE_USER: {
+            state = action.user;
+            return [state]
+        }
         default: return [...state];
     }
 }

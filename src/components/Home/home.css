@@ -39,8 +39,7 @@
 .list-class{
     margin-bottom: 20px;
 }
-.imgClass:hover{
-    transition-duration: .5s;
-    transform: scale(1.2);
-    margin-bottom: 20px;
+.list-class a{
+    text-decoration: none;
+    color: black;
 }

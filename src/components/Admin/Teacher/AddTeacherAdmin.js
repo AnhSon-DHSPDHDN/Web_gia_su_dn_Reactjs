@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { actAddTeacherRequest } from '../../../actions/index';
 import { connect } from 'react-redux';
-import { actAddNewTeacherToQuece } from '../../actions/index'
+import { Redirect } from 'react-router-dom'
 
-
-class RegisterTeacher extends Component {
+class AddTeacherAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,10 +22,10 @@ class RegisterTeacher extends Component {
             genderN: false
         }
     }
-    onChange = (e) => {
+    onChange = async (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        this.setState({
+        await this.setState({
             [name]: value
         })
     }
@@ -56,7 +56,7 @@ class RegisterTeacher extends Component {
         if (createBy) {
             if (name && gender && address && birthday && placeOfBirth
                 && phone && email && nowjob && avatar && cmnd && wish) {
-                await this.props.addNewTeacherToQuece({
+                await this.props.addTeacher({
                     name,
                     gender,
                     address,
@@ -69,19 +69,24 @@ class RegisterTeacher extends Component {
                     cmnd,
                     wish,
                     createBy,
-                    accept: false
+                    accept: true
                 })
                 await alert('Dăng ký thành công');
-                return this.props.history.push('/');
+                return this.props.history.push('/admin/teacher');
             }
             return alert('Vui lòng điền đầy đủ các thông tin cần thiết')
         }
         return alert('Bạn phải đăng nhập để thực hiện chức năng này')
     }
     render() {
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
-                <h4 style={{ textAlign: 'center' }}>ĐĂNG KÝ GIA SƯ</h4>
+                <h4 style={{ textAlign: 'center' }}>ADD GIA SƯ</h4>
                 <div className="row">
                     <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <form>
@@ -222,22 +227,21 @@ class RegisterTeacher extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        teacherQuece: state.teacherQuece
+        teacher: state.teachers
     }
 }
-
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProp = (dispatch, props) => {
     return {
-        addNewTeacherToQuece: (teacher) => {
-            return dispatch(actAddNewTeacherToQuece(teacher))
+        addTeacher: (teacher) => {
+            return dispatch(actAddTeacherRequest(teacher))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterTeacher);
+export default connect(mapStateToProps, mapDispatchToProp)(AddTeacherAdmin);

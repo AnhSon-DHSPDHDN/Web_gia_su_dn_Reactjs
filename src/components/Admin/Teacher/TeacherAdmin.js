@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { actGetAllTeacherRequest } from '../../../actions/index';
+import {
+    actGetAllTeacherRequest,
+    actDeleteTeacherRequest
+} from '../../../actions/index';
 import { connect } from 'react-redux';
 import MenuAdmin from '../MenuAdmin';
+import { Redirect } from 'react-router-dom'
 
 class TeacherAdmin extends Component {
 
@@ -21,7 +25,9 @@ class TeacherAdmin extends Component {
                     <td>{teacher.birthday}</td>
                     <td>{teacher.phone}</td>
                     <td>
-                        <button type="button" className="btn btn-danger">Edit</button>
+                        <button type="button" className="btn btn-danger"
+                            onClick={() => this.onEdit(teacher.id)}
+                        >Edit</button>
                         <button type="button" className="btn btn-default"
                             onClick={() => this.onDelete(teacher.id)}
                         >Delete</button>
@@ -32,18 +38,37 @@ class TeacherAdmin extends Component {
         return result;
     }
 
+    onEdit = (id) => {
+        return this.props.history.push(`teacher/edit/${id}`)
+    }
+
+    onAddTeacher = () => {
+        return this.props.history.push('teacher/add');
+    }
+
+    onDelete = (id) => {
+        return this.props.deleteTeacher(id);
+    }
+
     render() {
         let { allTeacher } = this.props;
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
                 <MenuAdmin />
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List Gia Sư</h3>
+                <div className="panel panel-primary">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">List Gia Sư</h3>
                     </div>
-                    <div class="panel-body">
-
-                        <table class="table table-bordered table-hover">
+                    <div className="panel-body">
+                        <button type="button" className="btn btn-success"
+                            onClick={this.onAddTeacher}
+                        >ADD NEW TEACHER</button>
+                        <table className="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -77,6 +102,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         getAllTeacher: () => {
             return dispatch(actGetAllTeacherRequest())
+        },
+        deleteTeacher: (id) => {
+            return dispatch(actDeleteTeacherRequest(id))
         }
     }
 }

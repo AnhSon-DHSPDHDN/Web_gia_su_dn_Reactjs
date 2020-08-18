@@ -25,19 +25,19 @@ class RegisterPage extends Component {
             [name]: value
         })
     }
-    onRegister = () => {
+    onRegister = async () => {
         let { username, password, repassword } = this.state;
         let { users } = this.props;
         let check = null;
         if (password === repassword && username !== '' && password !== '') {
-            check = users.find(user => {
+            check = await users.find(user => {
                 if (user.userName === username) {
                     return user;
                 }
                 return null;
             })
             if (check === undefined) {
-                this.props.fetchNewUser({
+                await this.props.fetchNewUser({
                     userName: username,
                     passWord: password,
                     isAdmin: false

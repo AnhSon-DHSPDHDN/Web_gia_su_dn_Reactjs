@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 
 export default class NavIsLogged extends Component {
-    onLogOut = () => {
-        localStorage.removeItem('token');
-        window.location.href = '/login'
+    onLogOut = async () => {
+        await localStorage.removeItem('token');
+        return window.location.href = '/login'
+    }
+    goPageAdmin = () => {
+        return window.location.href = '/admin'
     }
     render() {
         let user = this.props.user.split(' ')[0];
@@ -32,6 +35,10 @@ export default class NavIsLogged extends Component {
                         <button type="button"
                             className="btn btn-success"
                             onClick={this.onLogOut}>Đăng Xuất</button>
+                        {permission === 'true' ?
+                            <button type="button" className="btn btn-primary" onClick={this.goPageAdmin}>Admin</button>
+                            : ''
+                        }
                     </div>
                 </div>
             </div>

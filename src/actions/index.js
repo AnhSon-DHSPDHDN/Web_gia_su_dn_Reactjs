@@ -48,6 +48,34 @@ export const getClassByIDAPI = (id) => {
         })
     }
 }
+// Edit lớp học
+export const editClassAdmin = (aclass) => {
+    return {
+        type: Types.UPDATE_CLASS,
+        class: aclass
+    }
+}
+export const editClassAdminRequest = (aclass, id) => {
+    return dispatch => {
+        return callAPI(`classes/${id}`, 'PUT', aclass).then(res => {
+            return dispatch(editClassAdmin(res.data))
+        })
+    }
+}
+// Delete lớp học
+export const deleteClassAdmin = (id) => {
+    return {
+        type: Types.DELETE_CLASS,
+        id: id
+    }
+}
+export const deleteClassAdminRequest = (id) => {
+    return dispatch => {
+        return callAPI(`classes/${id}`, 'DELETE', null).then(() => {
+            return dispatch(deleteClassAdmin(id))
+        })
+    }
+}
 
 
 //----------------------------------------------------------- User
@@ -63,6 +91,34 @@ export const actFetchUsersRequest = () => {
     return (dispatch) => {
         return callAPI('users', 'GET', null).then(res => {
             dispatch(actFetchUsers(res.data))
+        })
+    }
+}
+// Get User by ID
+export const actGetUserByID = (user) => {
+    return {
+        type: Types.GET_USER_BY_ID,
+        user: user
+    }
+}
+export const actGetUserByIDRequest = (id) => {
+    return dispatch => {
+        callAPI(`users/${id}`, 'GET', null).then(res => {
+            dispatch(actGetUserByID(res.data))
+        })
+    }
+}
+// Edit User
+export const actEditUser = (user) => {
+    return {
+        type: Types.UPDATE_USER,
+        user: user
+    }
+}
+export const actEditUserRequest = (user, id) => {
+    return dispatch => {
+        return callAPI(`users/${id}`, 'PUT', user).then(res => {
+            dispatch(actEditUser(res.data))
         })
     }
 }
@@ -109,7 +165,7 @@ export const actFetchNewClassQuece = (classquece) => {
 export const actFetchNewClassQueceRequest = (classquece) => {
     return dispatch => {
         return callAPI('classesquece', 'POST', classquece).then(res => {
-            dispatch(actFetchNewClassQuece(res.data))
+            return dispatch(actFetchNewClassQuece(res.data))
         })
     }
 }
@@ -156,7 +212,7 @@ export const actFetchNewTeacherToQuece = (teacher) => {
 export const actAddNewTeacherToQuece = (teacher) => {
     return dispatch => {
         return callAPI('teachersquece', 'POST', teacher).then(res => {
-            dispatch(actFetchNewTeacherToQuece(res.data))
+            return dispatch(actFetchNewTeacherToQuece(res.data))
         })
     }
 }
@@ -174,6 +230,47 @@ export const actGetAllTeacherQueceRequest = () => {
         })
     }
 }
+export const actGetTeacherQueceByID = (teacher) => {
+    return {
+        type: Types.GET_TEACHER_QUECE_BY_ID,
+        teacherQuece: teacher
+    }
+}
+export const actGetTeacherQueceByIDRequest = (id) => {
+    return dispatch => {
+        return callAPI(`teachersquece/${id}`, 'GET', null).then(res => {
+            dispatch(actGetTeacherQueceByID(res.data))
+        })
+    }
+}
+// Edit teacher quece
+export const actEditTeacherQuece = (teacher) => {
+    return {
+        type: Types.EDIT_TEACHER_QUECE,
+        teacherQuece: teacher
+    }
+}
+export const actEditTeacherQueceRequest = (teacher, id) => {
+    return dispatch => {
+        return callAPI(`teachersquece/${id}`, 'PUT', teacher).then(res => {
+            dispatch(actEditTeacherQuece(res.data))
+        })
+    }
+}
+// Delete teacher quece
+export const actDeleteTeacherQuece = (id) => {
+    return {
+        type: Types.DELETE_TEACHER_QUECE,
+        id: id
+    }
+}
+export const actDeleteTeacherQueceRequest = (id) => {
+    return dispatch => {
+        return callAPI(`teachersquece/${id}`, 'DELETE', null).then(() => {
+            return dispatch(actDeleteTeacherQuece(id))
+        })
+    }
+}
 
 
 //------------------------------------------------------------------TEACHER
@@ -187,7 +284,63 @@ export const actGetAllTeacher = (teacher) => {
 export const actGetAllTeacherRequest = () => {
     return dispatch => {
         return callAPI('teachers', 'GET', null).then(res => {
-            dispatch(actGetAllTeacher(res.data))
+            return dispatch(actGetAllTeacher(res.data))
+        })
+    }
+}
+// Add Gia Sư
+export const actAddTeacher = (teacher) => {
+    return {
+        type: Types.ADD_TEACHER,
+        teachers: teacher
+    }
+}
+export const actAddTeacherRequest = (teacher) => {
+    return dispatch => {
+        return callAPI('teachers', 'POST', teacher).then(res => {
+            return dispatch(actAddTeacher(res.data))
+        })
+    }
+}
+// Delete Teacher
+export const actDeleteTeacher = (id) => {
+    return {
+        type: Types.DELETE_TEACHER,
+        id: id
+    }
+}
+export const actDeleteTeacherRequest = (id) => {
+    return dispatch => {
+        return callAPI(`teachers/${id}`, 'DELETE', null).then(() => {
+            return dispatch(actDeleteTeacher(id))
+        })
+    }
+}
+// Get Teacher By ID 
+export const actGetTeacherByID = (teacher) => {
+    return {
+        type: Types.GET_TEACHER_BY_ID,
+        teachers: teacher
+    }
+}
+export const actGetTeacherByIDRequest = (id) => {
+    return dispatch => {
+        return callAPI(`teachers/${id}`, 'GET', null).then(res => {
+            return dispatch(actGetTeacherByID(res.data))
+        })
+    }
+}
+// Edit Teacher
+export const actEditTeacher = teacher => {
+    return {
+        type: Types.EDIT_TEACHER,
+        teachers: teacher
+    }
+}
+export const actEditTeacherRequest = (teacher, id) => {
+    return dispatch => {
+        return callAPI(`teachers/${id}`, 'PUT', teacher).then(res => {
+            return dispatch(actEditTeacher(res.data))
         })
     }
 }

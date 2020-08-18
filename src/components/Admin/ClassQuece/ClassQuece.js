@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuAdmin from '../MenuAdmin';
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {
     actGetAllClassFromQueceRequest,
@@ -13,10 +14,10 @@ class ClassQuece extends Component {
         this.props.getAllClassQuece();
     }
     onDelete = (id) => {
-        this.props.deleteClassQuece(id);
+        return this.props.deleteClassQuece(id);
     }
-    onAccept = (clas) => {
-        this.props.addClasses({
+    onAccept = async (clas) => {
+        await this.props.addClasses({
             student: clas.student,
             classRank: clas.classRank,
             subJects: clas.subJects,
@@ -29,7 +30,7 @@ class ClassQuece extends Component {
             createBy: clas.createBy,
             image: clas.image
         });
-        this.props.deleteClassQuece(clas.id);
+        return this.props.deleteClassQuece(clas.id);
     }
     showAllClass = (allClass) => {
         let result;
@@ -43,7 +44,6 @@ class ClassQuece extends Component {
                     <td>{clas.salary}</td>
                     <td>{clas.request}</td>
                     <td>
-                        <button type="button" className="btn btn-danger">Edit</button>
                         <button type="button" className="btn btn-success"
                             onClick={() => this.onAccept(clas)}
                         >Accept</button>
@@ -58,6 +58,11 @@ class ClassQuece extends Component {
     }
     render() {
         let { allClass } = this.props;
+        let isAdmin = localStorage.getItem('token') ?
+            localStorage.getItem('token').split(' ')[1] : '';
+        if (isAdmin !== 'true') {
+            return <Redirect to="/" />
+        }
         return (
             <div className="container">
                 <MenuAdmin />

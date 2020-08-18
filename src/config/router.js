@@ -57,6 +57,16 @@ const routers = [
         component: React.lazy(() => import('../components/Admin/Student/ClassesAdmin'))
     },
     {
+        path: '/admin/classes/edit/:id',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/Student/ClassAdminEdit'))
+    },
+    {
+        path: '/admin/classes/add',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/Student/ClassAdminAdd'))
+    },
+    {
         path: '/admin/users',
         exact: true,
         component: React.lazy(() => import('../components/Admin/Users/UserAdmin'))
@@ -67,9 +77,34 @@ const routers = [
         component: React.lazy(() => import('../components/Admin/Teacher/TeacherAdmin'))
     },
     {
+        path: '/admin/teacher/edit/:id',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/Teacher/EditTeacherAdmin'))
+    },
+    {
+        path: '/admin/teacher/add',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/Teacher/AddTeacherAdmin'))
+    },
+    {
+        path: '/teacher/:id',
+        exact: true,
+        component: React.lazy(() => import('../components/DetailTeacher'))
+    },
+    {
         path: '/admin/teacher-quece',
         exact: true,
         component: React.lazy(() => import('../components/Admin/TeacherQuece/TeacherQueceAdmin'))
+    },
+    {
+        path: '/admin/teacher-quece/edit/:id',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/TeacherQuece/TeacherQueceAdminEdit'))
+    },
+    {
+        path: '/admin/users/edit/:id',
+        exact: true,
+        component: React.lazy(() => import('../components/Admin/Users/EditUserAdmin'))
     }
 ];
 export default routers;

@@ -25,7 +25,7 @@ class Intro extends Component {
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                             <div className="video">
-                                <video controls>
+                                <video controls autoPlay>
                                     <source src={`${process.env.PUBLIC_URL}/img/intro.mp4`}></source>
                                 </video>
                             </div>
