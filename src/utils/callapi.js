@@ -7,6 +7,6 @@ export default async function callAPI(endpoint, method = "GET", body) {
         url: `${Config.API_URL}/${endpoint}`,
         data: body
     }).catch(err => {
-        console.log(err);
+        throw new Error(err);
     });
 }
